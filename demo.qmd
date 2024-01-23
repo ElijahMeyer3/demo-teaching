@@ -63,30 +63,16 @@ By the end of class, we will
 
 -- understand how to interpret a confidence interval in the context of the problem
 
-## ae-demo
+# ae-demo
 
-## Wrap Up
+## In Summary 
 
-What are bootstrap methods? 
+-- Let research guide my practice 
 
-- Resampling **with replacmement* from your own data to create a bootstrap distribution! 
+-- Have a conversation with students
 
-## Wrap Up 
+-- Build a community + learn together
 
-How did we create a confidence interval using bootstrap methods for a difference in means?
+-- Adapt to class size/structure 
 
-- Create a simulated distribution of sample statistics, and found quantiles specific to the level of confidence we wanted!
-
-## Wrap Up
-
-How does the level of confidence impact the center and width of our confidence intervals?
-
-- Center?
-
-- Width?
-
-## Wrap Up
-
-How do we interpret confidence intervals?
-
-- We are __% confident that the true population parameter is between (#,#). Note the order of subtraction, and how that changes our interpretation!
+-- Incorporate technology 

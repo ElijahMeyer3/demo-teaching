@@ -23,13 +23,13 @@ The data were collected in 1936 at the Gaspé Peninsula, in Canada. The data set
 data(iris)
 ```
 
-In a previous class, we conducted a hypothesis test to test for a difference between the mean sepal length of setosa and versicolor. 
+In a previous class, we conducted a hypothesis test to test for a difference between the mean sepal length of setosa and versicolor.
 
 **Goal**: Now, we want to **estimate** what the difference actually is.
 
 What is the notation for what we are trying to estimate (setosa - versicolor)?
 
-$\mu_s - \mu_v$
+$insert-response$
 
 First, we want to filter the data set to only contain our two Species. Please create a new data set that achieves this below. Name this new data set `iris_filter`. Let's also calculate our statistic.
 
@@ -40,15 +40,13 @@ iris_filter <- iris |>
   droplevels()
 
 
-iris_filter |>
-  group_by(Species) |>
-  summarise(mean_sep = mean(Sepal.Length))
+# insert code here
 
 ```
 
 Based on the above calculation, our point estimate is:
 
-$\bar{x_s} - \bar{x_v}$ = **-0.93**
+$\bar{x_s} - \bar{x_v}$ = **insert-response**
 
 Now, let's create our distribution in R:
 
@@ -70,11 +68,15 @@ Now, let's create this in R by filling in the ... below!
 set.seed(12345) 
 
 boot_df <- iris_filter |>
-  specify(response = Sepal.Length, explanatory = Species) |>
-  generate(reps = 1000, type = "bootstrap") |>
-  calculate(stat = "diff in means" , order = c("setosa", "versicolor"))
+  specify(response = ..., explanatory = ...) |>
+  generate(reps = ..., type = "...") |>
+  calculate(stat = "..." , order = c("setosa", "versicolor"))
 
 ```
+
+
+
+--- 
 
 Take a glimpse at boot_df. What do you see?
 
@@ -122,7 +124,6 @@ Confidence intervals are often misinterpreted as probability....
 
 Lets explore: http://www.rossmanchance.com/ISIapplets.html
 
-What is the difference between confidence and probability? 
+What is the difference between confidence and probability?
 
 **Add response**
-
