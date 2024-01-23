@@ -1,0 +1,128 @@
+---
+title: "Confidence Intervals"
+format: html
+editor: visual
+---
+
+## Packages
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+```
+
+## Context
+
+The Iris Dataset contains four features (length and width of sepals and petals) of 50 samples of three species of Iris (Iris setosa, Iris virginica and Iris versicolor). A sepal is the outer parts of the flower (often green and leaf-like) that enclose a developing bud. The petal are parts of a flower that are the pollen producing part of the flower that are often conspicuously colored. The difference between sepals and petals can be seen below.
+
+![](Iris.png)
+
+The data were collected in 1936 at the Gaspé Peninsula, in Canada. The data set is prepackaged in R, and is called iris. All measurements are in `cm`.
+
+```{r}
+data(iris)
+```
+
+In a previous class, we conducted a hypothesis test to test for a difference between the mean sepal length of setosa and versicolor. 
+
+**Goal**: Now, we want to **estimate** what the difference actually is.
+
+What is the notation for what we are trying to estimate (setosa - versicolor)?
+
+$\mu_s - \mu_v$
+
+First, we want to filter the data set to only contain our two Species. Please create a new data set that achieves this below. Name this new data set `iris_filter`. Let's also calculate our statistic.
+
+```{r}
+
+iris_filter <- iris |>
+  filter(Species != "virginica") |>
+  droplevels()
+
+
+iris_filter |>
+  group_by(Species) |>
+  summarise(mean_sep = mean(Sepal.Length))
+
+```
+
+Based on the above calculation, our point estimate is:
+
+$\bar{x_s} - \bar{x_v}$ = **-0.93**
+
+Now, let's create our distribution in R:
+
+## Bootstrap Distributon
+
+The term bootstrapping comes from the phrase "pulling oneself up by one's bootstraps", which is a metaphor for accomplishing an impossible task without any outside help
+
+Impossible task: estimating a population parameter using data from only the given sample.
+
+Let's demonstrate how one simulated sample is created on your bootstrap distribution. Detail the steps below:
+
+**Add response**
+
+Now, let's create this in R by filling in the ... below!
+
+```{r}
+#| eval: false
+
+set.seed(12345) 
+
+boot_df <- iris_filter |>
+  specify(response = Sepal.Length, explanatory = Species) |>
+  generate(reps = 1000, type = "bootstrap") |>
+  calculate(stat = "diff in means" , order = c("setosa", "versicolor"))
+
+```
+
+Take a glimpse at boot_df. What do you see?
+
+**Add response**
+
+Plot a histogram of boot_df. Where is it centered? Why does this make sense?
+
+```{r}
+
+# insert code here
+
+```
+
+**Add Response**
+
+Now, let's use boot_df to create our 95% confidence interval.
+
+```{r}
+
+
+boot_df |>
+  summarize(lower = quantile(..., ...),
+            upper = quantile(..., ...))
+
+
+```
+
+Let's visualize our confidence interval by adding a vertical line at each of these values. Use the code you wrote above and add two lines using geom_vline.
+
+What happens to the interval if we make a 90% confidence interval? Does the center change? Does the width change?
+
+**Add response**
+
+What happens to the interval if we make a 99% confidence interval? Does the center change? Does the width change?
+
+**Add response**
+
+## Optional (If Time)
+
+What is the correct interpretation of our calculated confidence interval?
+
+**Add response**
+
+Confidence intervals are often misinterpreted as probability....
+
+Lets explore: http://www.rossmanchance.com/ISIapplets.html
+
+What is the difference between confidence and probability? 
+
+**Add response**
+
