@@ -29,7 +29,7 @@ In a previous class, we conducted a hypothesis test to test for a difference bet
 
 What is the notation for what we are trying to estimate (setosa - versicolor)?
 
-$insert-response$
+$\mu_s - \mu_v$
 
 First, we want to filter the data set to only contain our two Species. Please create a new data set that achieves this below. Name this new data set `iris_filter`. Let's also calculate our statistic.
 
@@ -40,15 +40,19 @@ iris_filter <- iris |>
   droplevels()
 
 
-# insert code here
+iris_filter |>
+  group_by(Species) |>
+  summarise(mean_sep = mean(Sepal.Length))
 
 ```
 
 Based on the above calculation, our point estimate is:
 
-$\bar{x_s} - \bar{x_v}$ = **insert-response**
+$\bar{x_s} - \bar{x_v}$ = **-0.93**
 
 Now, let's create our distribution in R:
+
+# Start
 
 ## Bootstrap Distributon
 
